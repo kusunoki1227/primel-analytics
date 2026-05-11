@@ -158,13 +158,15 @@
     grid-template-columns: repeat(4, 1fr);
     gap: 12px; margin-bottom: 20px;
   }
-  @media (max-width: 600px) { .tt-metrics { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 700px) { .tt-metrics { grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 900px) { .tt-metrics { grid-template-columns: repeat(6, 1fr); } }
   .tt-card {
-    background: white; border-radius: 12px; padding: 16px;
-    text-align: center; box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+    background: #1a1a2e; border: 1px solid #2a2a4a;
+    border-radius: 12px; padding: 14px 10px;
+    text-align: center;
   }
-  .tt-val { font-size: 22px; font-weight: 700; color: #69C9D0; }
-  .tt-lbl { font-size: 12px; color: #888; margin-top: 4px; }
+  .tt-val { font-size: 20px; font-weight: 700; color: #69C9D0; }
+  .tt-lbl { font-size: 11px; color: #888; margin-top: 4px; line-height:1.4; }
   .tt-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -204,7 +206,7 @@
     </div>
   </div>
   <div class="updated-at" style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;">
-    <span>最終更新: 2026年05月11日 18:32 ｜ 分析対象: 直近 12 件</span>
+    <span>最終更新: 2026年05月11日 18:33 ｜ 分析対象: 直近 12 件</span>
     <button id="refreshBtn" onclick="handleRefresh()" style="
       background:rgba(255,255,255,0.15);
       border:1px solid rgba(255,255,255,0.4);
