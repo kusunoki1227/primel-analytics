@@ -199,12 +199,12 @@
       <div class="avatar">D</div>
       <div>
         <div class="account-name">@daysofprimel</div>
-        <div class="account-sub"></div>
+        <div class="account-sub">プリメールの日常</div>
       </div>
     </div>
   </div>
   <div class="updated-at" style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;">
-    <span>最終更新: 2026年05月11日 13:32 ｜ 分析対象: 直近 12 件</span>
+    <span>最終更新: 2026年05月11日 18:05 ｜ 分析対象: 直近 15 件</span>
     <button id="refreshBtn" onclick="handleRefresh()" style="
       background:rgba(255,255,255,0.15);
       border:1px solid rgba(255,255,255,0.4);
@@ -220,63 +220,44 @@
       <span id="refreshIcon">🔄</span> データ更新
     </button>
   </div>
-  <!-- モバイル用：更新リクエスト送信モーダル -->
+  <!-- 更新リクエスト送信モーダル（PC・スマホ共通） -->
   <div id="refreshModal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.6);z-index:9999;align-items:center;justify-content:center;">
     <div style="background:#1a1a2e;border:1px solid #333;border-radius:16px;padding:28px 32px;max-width:400px;width:90%;color:#fff;font-size:15px;line-height:1.7;">
 
-      <!-- PC向け表示 -->
-      <div id="refreshModalPC">
-        <div style="font-size:20px;font-weight:700;margin-bottom:12px;">📊 データを更新する</div>
-        <p style="color:#aaa;margin:0 0 16px;">Macで以下のファイルをダブルクリックしてください：</p>
-        <div style="background:#0d0d1a;border-radius:10px;padding:12px 16px;font-family:monospace;color:#7ecfff;margin-bottom:16px;">
-          📁 書類/primel106-autoposter/<br>
-          　　▶ 分析を更新.command
-        </div>
-        <p style="color:#aaa;font-size:13px;margin:0 0 20px;">実行後、このページを再読み込みすると最新データが表示されます。</p>
-        <div style="display:flex;gap:10px;justify-content:flex-end;">
+      <div id="refreshStatusArea">
+        <div style="font-size:20px;font-weight:700;margin-bottom:12px;">🔄 データを更新する</div>
+        <p style="color:#aaa;margin:0 0 20px;">ボタンを押すとMacに更新リクエストを送信します。<br>Macがオンラインなら1〜3分でデータが更新されます。</p>
+        <p style="color:#666;font-size:12px;margin:0 0 20px;">※ Mac側で「リスナーを起動.command」が実行中の必要があります</p>
+        <div style="display:flex;gap:10px;justify-content:flex-end;flex-wrap:wrap;">
           <button onclick="document.getElementById('refreshModal').style.display='none'"
-            style="background:#333;border:none;color:#fff;padding:8px 20px;border-radius:20px;cursor:pointer;font-size:14px;">閉じる</button>
-          <button onclick="location.reload()"
-            style="background:linear-gradient(135deg,#667eea,#764ba2);border:none;color:#fff;padding:8px 20px;border-radius:20px;cursor:pointer;font-size:14px;">🔄 再読み込み</button>
+            style="background:#333;border:none;color:#fff;padding:10px 20px;border-radius:20px;cursor:pointer;font-size:14px;">閉じる</button>
+          <button id="sendRefreshBtn" onclick="sendRefreshRequest()"
+            style="background:linear-gradient(135deg,#E1306C,#833AB4);border:none;color:#fff;padding:10px 24px;border-radius:20px;cursor:pointer;font-size:15px;font-weight:700;">
+            🔄 今すぐ更新
+          </button>
         </div>
       </div>
-
-      <!-- スマホ向け表示 -->
-      <div id="refreshModalMobile" style="display:none;">
-        <div style="font-size:20px;font-weight:700;margin-bottom:12px;">📱 データを更新する</div>
-        <div id="refreshStatusArea">
-          <p style="color:#aaa;margin:0 0 20px;">ボタンを押すとMacに更新リクエストを送信します。<br>Macがオンラインなら数分後にデータが更新されます。</p>
-          <div style="display:flex;gap:10px;justify-content:flex-end;flex-wrap:wrap;">
-            <button onclick="document.getElementById('refreshModal').style.display='none'"
-              style="background:#333;border:none;color:#fff;padding:10px 20px;border-radius:20px;cursor:pointer;font-size:14px;">閉じる</button>
-            <button id="sendRefreshBtn" onclick="sendRefreshRequest()"
-              style="background:linear-gradient(135deg,#E1306C,#833AB4);border:none;color:#fff;padding:10px 24px;border-radius:20px;cursor:pointer;font-size:15px;font-weight:700;">
-              🔄 今すぐ更新
-            </button>
-          </div>
+      <div id="refreshSending" style="display:none;text-align:center;padding:10px 0;">
+        <div style="font-size:32px;margin-bottom:12px;">⏳</div>
+        <p style="color:#aaa;">更新リクエストを送信中...</p>
+      </div>
+      <div id="refreshDone" style="display:none;text-align:center;padding:10px 0;">
+        <div style="font-size:36px;margin-bottom:12px;">✅</div>
+        <p style="color:#aaa;margin-bottom:4px;">リクエストを送信しました！</p>
+        <p style="color:#888;font-size:13px;margin-bottom:20px;">Macがデータを取得中です（約1〜3分）。<br>完了後、下のボタンでページを更新してください。</p>
+        <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
+          <button onclick="document.getElementById('refreshModal').style.display='none'"
+            style="background:#333;border:none;color:#fff;padding:10px 20px;border-radius:20px;cursor:pointer;font-size:14px;">閉じる</button>
+          <button onclick="location.reload()"
+            style="background:linear-gradient(135deg,#667eea,#764ba2);border:none;color:#fff;padding:10px 24px;border-radius:20px;cursor:pointer;font-size:15px;font-weight:700;">🔄 ページを再読み込み</button>
         </div>
-        <div id="refreshSending" style="display:none;text-align:center;padding:10px 0;">
-          <div style="font-size:32px;margin-bottom:12px;">⏳</div>
-          <p style="color:#aaa;">更新リクエストを送信中...</p>
-        </div>
-        <div id="refreshDone" style="display:none;text-align:center;padding:10px 0;">
-          <div style="font-size:36px;margin-bottom:12px;">✅</div>
-          <p style="color:#aaa;margin-bottom:4px;">リクエストを送信しました！</p>
-          <p style="color:#888;font-size:13px;margin-bottom:20px;">Macがデータを取得中です（約1〜3分）。<br>完了後、下のボタンでページを更新してください。</p>
-          <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
-            <button onclick="document.getElementById('refreshModal').style.display='none'"
-              style="background:#333;border:none;color:#fff;padding:10px 20px;border-radius:20px;cursor:pointer;font-size:14px;">閉じる</button>
-            <button onclick="location.reload()"
-              style="background:linear-gradient(135deg,#667eea,#764ba2);border:none;color:#fff;padding:10px 24px;border-radius:20px;cursor:pointer;font-size:15px;font-weight:700;">🔄 ページを再読み込み</button>
-          </div>
-        </div>
-        <div id="refreshError" style="display:none;text-align:center;padding:10px 0;">
-          <div style="font-size:36px;margin-bottom:12px;">❌</div>
-          <p style="color:#f88;margin-bottom:20px;">送信に失敗しました。<br>ネットワークを確認してください。</p>
-          <div style="display:flex;gap:10px;justify-content:center;">
-            <button onclick="resetRefreshUI()"
-              style="background:#555;border:none;color:#fff;padding:10px 20px;border-radius:20px;cursor:pointer;font-size:14px;">やり直す</button>
-          </div>
+      </div>
+      <div id="refreshError" style="display:none;text-align:center;padding:10px 0;">
+        <div style="font-size:36px;margin-bottom:12px;">❌</div>
+        <p style="color:#f88;margin-bottom:20px;">送信に失敗しました。<br>ネットワークを確認してください。</p>
+        <div style="display:flex;gap:10px;justify-content:center;">
+          <button onclick="resetRefreshUI()"
+            style="background:#555;border:none;color:#fff;padding:10px 20px;border-radius:20px;cursor:pointer;font-size:14px;">やり直す</button>
         </div>
       </div>
 
@@ -285,22 +266,9 @@
   <script>
   var NTFY_TOPIC = "primel106-refresh-xn0z1pfsuvj8";
 
-  function isMobile() {
-    return /iPhone|iPad|iPod|Android|Mobile/i.test(navigator.userAgent) ||
-           ('ontouchstart' in window && window.innerWidth < 900);
-  }
-
   function handleRefresh() {
-    var modal = document.getElementById('refreshModal');
-    modal.style.display = 'flex';
-    if (isMobile()) {
-      document.getElementById('refreshModalPC').style.display     = 'none';
-      document.getElementById('refreshModalMobile').style.display = 'block';
-      resetRefreshUI();
-    } else {
-      document.getElementById('refreshModalPC').style.display     = 'block';
-      document.getElementById('refreshModalMobile').style.display = 'none';
-    }
+    document.getElementById('refreshModal').style.display = 'flex';
+    resetRefreshUI();
   }
 
   function resetRefreshUI() {
@@ -363,17 +331,17 @@
       
         <div class="metric-card">
           <div class="metric-icon">👥</div>
-          <div class="metric-value">0</div>
+          <div class="metric-value">14</div>
           <div class="metric-label">フォロワー</div>
         </div>
         <div class="metric-card">
           <div class="metric-icon">📷</div>
-          <div class="metric-value">0</div>
+          <div class="metric-value">70</div>
           <div class="metric-label">総投稿数</div>
         </div>
         <div class="metric-card">
           <div class="metric-icon">▶️</div>
-          <div class="metric-value">128</div>
+          <div class="metric-value">131</div>
           <div class="metric-label">平均再生数</div>
         </div>
         <div class="metric-card">
@@ -420,7 +388,7 @@
         </div>
       </div>
       <div class="chart-card">
-        <div class="chart-title">インタラクション内訳（直近 12 件合計）</div>
+        <div class="chart-title">インタラクション内訳（直近 15 件合計）</div>
         <div style="position:relative;height:220px">
           <canvas id="interChart" role="img" aria-label="いいね・コメント・保存の内訳">インタラクションデータ</canvas>
         </div>
@@ -480,6 +448,14 @@
             </div>
             <p class="suggestion-body">動画の最後に「コメントで教えて！」「保存して見返して！」などCTAを入れると改善しやすいです。</p>
           </div>
+          <div class="suggestion-card">
+            <div class="suggestion-header">
+              <span class="suggestion-icon">🎬</span>
+              <span class="suggestion-title">「動画」形式が最も伸びやすい</span>
+              <span class="priority-badge" style="background:#F77737">推奨</span>
+            </div>
+            <p class="suggestion-body">コンテンツ形式別では動画が平均再生数トップ。このフォーマットを中心に制作すると効率的です。</p>
+          </div>
   </div>
 
   <!-- 投稿一覧テーブル -->
@@ -505,6 +481,17 @@
             
           <tr>
             <td style="font-weight:500;color:#444">1</td>
+            <td><a href="https://www.instagram.com/p/DXzNOJkOXPG/" target="_blank" style="color:#833AB4;text-decoration:none;font-family:monospace;font-size:12px">DXzNOJkOXP</a></td>
+            <td><span class="badge badge-video">動画</span></td>
+            <td class="hide-sp" style="color:#888;font-size:13px">2026-05-01 23:54</td>
+            <td class="num">188</td>
+            <td class="num">2</td>
+            <td class="num hide-sp">2</td>
+            <td class="num hide-sp">0</td>
+            <td class="num">2.1%</td>
+          </tr>
+          <tr>
+            <td style="font-weight:500;color:#444">2</td>
             <td><a href="https://www.instagram.com/reel/DXX1GD7jvpr/" target="_blank" style="color:#833AB4;text-decoration:none;font-family:monospace;font-size:12px">DXX1GD7jvp</a></td>
             <td><span class="badge badge-reel">リール</span></td>
             <td class="hide-sp" style="color:#888;font-size:13px">2026-04-21 08:43</td>
@@ -515,7 +502,7 @@
             <td class="num">0.6%</td>
           </tr>
           <tr>
-            <td style="font-weight:500;color:#444">2</td>
+            <td style="font-weight:500;color:#444">3</td>
             <td><a href="https://www.instagram.com/reel/DX_EXpthM3Q/" target="_blank" style="color:#833AB4;text-decoration:none;font-family:monospace;font-size:12px">DX_EXpthM3</a></td>
             <td><span class="badge badge-reel">リール</span></td>
             <td class="hide-sp" style="color:#888;font-size:13px">2026-05-06 14:29</td>
@@ -526,7 +513,7 @@
             <td class="num">0.0%</td>
           </tr>
           <tr>
-            <td style="font-weight:500;color:#444">3</td>
+            <td style="font-weight:500;color:#444">4</td>
             <td><a href="https://www.instagram.com/reel/DXX8W-fDnsX/" target="_blank" style="color:#833AB4;text-decoration:none;font-family:monospace;font-size:12px">DXX8W-fDns</a></td>
             <td><span class="badge badge-reel">リール</span></td>
             <td class="hide-sp" style="color:#888;font-size:13px">2026-04-21 09:47</td>
@@ -537,7 +524,7 @@
             <td class="num">2.1%</td>
           </tr>
           <tr>
-            <td style="font-weight:500;color:#444">4</td>
+            <td style="font-weight:500;color:#444">5</td>
             <td><a href="https://www.instagram.com/reel/DXZKo7Jjj6i/" target="_blank" style="color:#833AB4;text-decoration:none;font-family:monospace;font-size:12px">DXZKo7Jjj6</a></td>
             <td><span class="badge badge-reel">リール</span></td>
             <td class="hide-sp" style="color:#888;font-size:13px">2026-04-21 21:11</td>
@@ -548,7 +535,7 @@
             <td class="num">1.5%</td>
           </tr>
           <tr>
-            <td style="font-weight:500;color:#444">5</td>
+            <td style="font-weight:500;color:#444">6</td>
             <td><a href="https://www.instagram.com/reel/DYC-uBfOnPw/" target="_blank" style="color:#833AB4;text-decoration:none;font-family:monospace;font-size:12px">DYC-uBfOnP</a></td>
             <td><span class="badge badge-reel">リール</span></td>
             <td class="hide-sp" style="color:#888;font-size:13px">2026-05-08 02:57</td>
@@ -559,7 +546,29 @@
             <td class="num">0.0%</td>
           </tr>
           <tr>
-            <td style="font-weight:500;color:#444">6</td>
+            <td style="font-weight:500;color:#444">7</td>
+            <td><a href="https://www.instagram.com/reel/DYD2cifuZYc/" target="_blank" style="color:#833AB4;text-decoration:none;font-family:monospace;font-size:12px">DYD2cifuZY</a></td>
+            <td><span class="badge badge-reel">リール</span></td>
+            <td class="hide-sp" style="color:#888;font-size:13px">2026-05-08 11:05</td>
+            <td class="num">127</td>
+            <td class="num">1</td>
+            <td class="num hide-sp">0</td>
+            <td class="num hide-sp">0</td>
+            <td class="num">0.8%</td>
+          </tr>
+          <tr>
+            <td style="font-weight:500;color:#444">8</td>
+            <td><a href="https://www.instagram.com/p/DXzM_V0OvKe/" target="_blank" style="color:#833AB4;text-decoration:none;font-family:monospace;font-size:12px">DXzM_V0OvK</a></td>
+            <td><span class="badge badge-video">動画</span></td>
+            <td class="hide-sp" style="color:#888;font-size:13px">2026-05-01 23:51</td>
+            <td class="num">127</td>
+            <td class="num">1</td>
+            <td class="num hide-sp">0</td>
+            <td class="num hide-sp">0</td>
+            <td class="num">0.8%</td>
+          </tr>
+          <tr>
+            <td style="font-weight:500;color:#444">9</td>
             <td><a href="https://www.instagram.com/reel/DYD4GsWu8Nl/" target="_blank" style="color:#833AB4;text-decoration:none;font-family:monospace;font-size:12px">DYD4GsWu8N</a></td>
             <td><span class="badge badge-reel">リール</span></td>
             <td class="hide-sp" style="color:#888;font-size:13px">2026-05-08 11:17</td>
@@ -570,18 +579,7 @@
             <td class="num">0.8%</td>
           </tr>
           <tr>
-            <td style="font-weight:500;color:#444">7</td>
-            <td><a href="https://www.instagram.com/reel/DYD2cifuZYc/" target="_blank" style="color:#833AB4;text-decoration:none;font-family:monospace;font-size:12px">DYD2cifuZY</a></td>
-            <td><span class="badge badge-reel">リール</span></td>
-            <td class="hide-sp" style="color:#888;font-size:13px">2026-05-08 11:05</td>
-            <td class="num">125</td>
-            <td class="num">1</td>
-            <td class="num hide-sp">0</td>
-            <td class="num hide-sp">0</td>
-            <td class="num">0.8%</td>
-          </tr>
-          <tr>
-            <td style="font-weight:500;color:#444">8</td>
+            <td style="font-weight:500;color:#444">10</td>
             <td><a href="https://www.instagram.com/reel/DYC9l1IuL9Z/" target="_blank" style="color:#833AB4;text-decoration:none;font-family:monospace;font-size:12px">DYC9l1IuL9</a></td>
             <td><span class="badge badge-reel">リール</span></td>
             <td class="hide-sp" style="color:#888;font-size:13px">2026-05-08 02:48</td>
@@ -592,7 +590,18 @@
             <td class="num">0.8%</td>
           </tr>
           <tr>
-            <td style="font-weight:500;color:#444">9</td>
+            <td style="font-weight:500;color:#444">11</td>
+            <td><a href="https://www.instagram.com/p/DXzNfE9uGO2/" target="_blank" style="color:#833AB4;text-decoration:none;font-family:monospace;font-size:12px">DXzNfE9uGO</a></td>
+            <td><span class="badge badge-video">動画</span></td>
+            <td class="hide-sp" style="color:#888;font-size:13px">2026-05-01 23:56</td>
+            <td class="num">121</td>
+            <td class="num">0</td>
+            <td class="num hide-sp">0</td>
+            <td class="num hide-sp">0</td>
+            <td class="num">0.0%</td>
+          </tr>
+          <tr>
+            <td style="font-weight:500;color:#444">12</td>
             <td><a href="https://www.instagram.com/reel/DYCwS8FuH9h/" target="_blank" style="color:#833AB4;text-decoration:none;font-family:monospace;font-size:12px">DYCwS8FuH9</a></td>
             <td><span class="badge badge-reel">リール</span></td>
             <td class="hide-sp" style="color:#888;font-size:13px">2026-05-08 01:23</td>
@@ -603,7 +612,7 @@
             <td class="num">0.0%</td>
           </tr>
           <tr>
-            <td style="font-weight:500;color:#444">10</td>
+            <td style="font-weight:500;color:#444">13</td>
             <td><a href="https://www.instagram.com/reel/DYD3ZUCOhal/" target="_blank" style="color:#833AB4;text-decoration:none;font-family:monospace;font-size:12px">DYD3ZUCOha</a></td>
             <td><span class="badge badge-reel">リール</span></td>
             <td class="hide-sp" style="color:#888;font-size:13px">2026-05-08 11:13</td>
@@ -614,7 +623,7 @@
             <td class="num">0.0%</td>
           </tr>
           <tr>
-            <td style="font-weight:500;color:#444">11</td>
+            <td style="font-weight:500;color:#444">14</td>
             <td><a href="https://www.instagram.com/reel/DYC8hliOnZm/" target="_blank" style="color:#833AB4;text-decoration:none;font-family:monospace;font-size:12px">DYC8hliOnZ</a></td>
             <td><span class="badge badge-reel">リール</span></td>
             <td class="hide-sp" style="color:#888;font-size:13px">2026-05-08 02:38</td>
@@ -625,7 +634,7 @@
             <td class="num">0.0%</td>
           </tr>
           <tr>
-            <td style="font-weight:500;color:#444">12</td>
+            <td style="font-weight:500;color:#444">15</td>
             <td><a href="https://www.instagram.com/reel/DXzNwWHON8Q/" target="_blank" style="color:#833AB4;text-decoration:none;font-family:monospace;font-size:12px">DXzNwWHON8</a></td>
             <td><span class="badge badge-reel">リール</span></td>
             <td class="hide-sp" style="color:#888;font-size:13px">2026-05-01 23:59</td>
@@ -644,16 +653,16 @@
 </div>
 
 <script>
-const labels  = ["04-21 08:43", "04-21 09:47", "04-21 21:11", "05-01 23:59", "05-06 14:29", "05-08 01:23", "05-08 02:38", "05-08 02:48", "05-08 02:57", "05-08 11:05", "05-08 11:13", "05-08 11:17"];
-const plays   = [156, 143, 136, 106, 143, 120, 113, 124, 130, 125, 118, 125];
-const likes   = [1, 3, 2, 2, 0, 0, 0, 1, 0, 1, 0, 1];
-const comments= [0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0];
-const saves   = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-const engRates= [0.64, 2.1, 1.47, 3.77, 0.0, 0.0, 0.0, 0.81, 0.0, 0.8, 0.0, 0.8];
-const hourAvg = [0, 120, 122, 0, 0, 0, 0, 0, 156, 143, 0, 123, 0, 0, 143, 0, 0, 0, 0, 0, 0, 136, 0, 106];
-const dayAvg  = [0, 145, 143, 0, 120, 0, 0];
-const typeLabels = ["\u30ea\u30fc\u30eb"];
-const typeCounts = [12];
+const labels  = ["04-21 08:43", "04-21 09:47", "04-21 21:11", "05-01 23:51", "05-01 23:54", "05-01 23:56", "05-01 23:59", "05-06 14:29", "05-08 01:23", "05-08 02:38", "05-08 02:48", "05-08 02:57", "05-08 11:05", "05-08 11:13", "05-08 11:17"];
+const plays   = [156, 143, 136, 127, 188, 121, 106, 143, 120, 113, 124, 130, 127, 118, 125];
+const likes   = [1, 3, 2, 1, 2, 0, 2, 0, 0, 0, 1, 0, 1, 0, 1];
+const comments= [0, 0, 0, 0, 2, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0];
+const saves   = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+const engRates= [0.64, 2.1, 1.47, 0.79, 2.13, 0.0, 3.77, 0.0, 0.0, 0.0, 0.81, 0.0, 0.79, 0.0, 0.8];
+const hourAvg = [0, 120, 122, 0, 0, 0, 0, 0, 156, 143, 0, 123, 0, 0, 143, 0, 0, 0, 0, 0, 0, 136, 0, 136];
+const dayAvg  = [0, 145, 143, 0, 127, 0, 0];
+const typeLabels = ["\u30ea\u30fc\u30eb", "\u52d5\u753b"];
+const typeCounts = [12, 3];
 
 const IG_PURPLE = "#833AB4";
 const IG_RED    = "#E1306C";
