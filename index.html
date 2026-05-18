@@ -16,7 +16,7 @@
     line-height: 1.6;
   }
 
-  /* ── ヘッダー ── */
+  /* ââ ãããã¼ ââ */
   .header {
     background: linear-gradient(135deg, #833AB4 0%, #E1306C 50%, #F77737 100%);
     color: white;
@@ -34,7 +34,7 @@
   .account-sub  { font-size: 13px; opacity: 0.85; margin-top: 2px; }
   .updated-at   { font-size: 12px; opacity: 0.75; margin-top: 8px; }
 
-  /* ── レイアウト ── */
+  /* ââ ã¬ã¤ã¢ã¦ã ââ */
   .container { max-width: 1100px; margin: 0 auto; padding: 24px 20px; }
   .section { margin-bottom: 28px; }
   .section-title {
@@ -43,7 +43,7 @@
     padding-left: 10px; margin-bottom: 16px;
   }
 
-  /* ── メトリクスカード ── */
+  /* ââ ã¡ããªã¯ã¹ã«ã¼ã ââ */
   .metrics-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
@@ -60,7 +60,7 @@
   .metric-value { font-size: 22px; font-weight: 700; color: #222; }
   .metric-label { font-size: 12px; color: #888; margin-top: 4px; }
 
-  /* ── チャートカード ── */
+  /* ââ ãã£ã¼ãã«ã¼ã ââ */
   .chart-card {
     background: white;
     border-radius: 12px;
@@ -86,7 +86,7 @@
     th, td { padding: 8px 8px; font-size: 12px; }
   }
 
-  /* ── 改善提案 ── */
+  /* ââ æ¹åææ¡ ââ */
   .suggestion-card {
     background: white;
     border-radius: 12px;
@@ -105,7 +105,7 @@
   }
   .suggestion-body { font-size: 13px; color: #666; line-height: 1.7; }
 
-  /* ── 投稿テーブル ── */
+  /* ââ æç¨¿ãã¼ãã« ââ */
   .table-wrap { overflow-x: auto; }
   table { width: 100%; border-collapse: collapse; font-size: 13px; }
   th {
@@ -128,7 +128,7 @@
   .badge-carousel{ background: #faf0e6; color: #B06000; }
   .badge-other   { background: #f0f0f0; color: #666; }
 
-  /* ── タブナビ ── */
+  /* ââ ã¿ããã ââ */
   .tab-nav {
     display: flex;
     border-bottom: 2px solid #eee;
@@ -152,7 +152,7 @@
   .tab-pane { display: none; }
   .tab-pane.active { display: block; }
 
-  /* ── TikTok固有スタイル ── */
+  /* ââ TikTokåºæã¹ã¿ã¤ã« ââ */
   .tt-metrics {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -206,7 +206,7 @@
     </div>
   </div>
   <div class="updated-at" style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;">
-    <span>最終更新: 2026年05月18日 15:04 ｜ 分析対象: 直近 12 件</span>
+    <span>æçµæ´æ°: 2026å¹´05æ18æ¥ 15:04 ï½ åæå¯¾è±¡: ç´è¿ 12 ä»¶</span>
     <button id="refreshBtn" onclick="handleRefresh()" style="
       background:rgba(255,255,255,0.15);
       border:1px solid rgba(255,255,255,0.4);
@@ -219,47 +219,47 @@
       transition:background 0.2s;
     " onmouseover="this.style.background='rgba(255,255,255,0.25)'"
        onmouseout="this.style.background='rgba(255,255,255,0.15)'">
-      <span id="refreshIcon">🔄</span> データ更新
+      <span id="refreshIcon">ð</span> ãã¼ã¿æ´æ°
     </button>
   </div>
-  <!-- 更新リクエスト送信モーダル（PC・スマホ共通） -->
+  <!-- æ´æ°ãªã¯ã¨ã¹ãéä¿¡ã¢ã¼ãã«ï¼PCã»ã¹ããå±éï¼ -->
   <div id="refreshModal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.6);z-index:9999;align-items:center;justify-content:center;">
     <div style="background:#1a1a2e;border:1px solid #333;border-radius:16px;padding:28px 32px;max-width:400px;width:90%;color:#fff;font-size:15px;line-height:1.7;">
 
       <div id="refreshStatusArea">
-        <div style="font-size:20px;font-weight:700;margin-bottom:12px;">🔄 データを更新する</div>
-        <p style="color:#aaa;margin:0 0 20px;">ボタンを押すとMacに更新リクエストを送信します。<br>Macがオンラインなら1〜3分でデータが更新されます。</p>
-        <p style="color:#666;font-size:12px;margin:0 0 20px;">※ Mac側で「リスナーを起動.command」が実行中の必要があります</p>
+        <div style="font-size:20px;font-weight:700;margin-bottom:12px;">ð ãã¼ã¿ãæ´æ°ãã</div>
+        <p style="color:#aaa;margin:0 0 20px;">ãã¿ã³ãæ¼ãã¨Macã«æ´æ°ãªã¯ã¨ã¹ããéä¿¡ãã¾ãã<br>Macããªã³ã©ã¤ã³ãªã1ã3åã§ãã¼ã¿ãæ´æ°ããã¾ãã</p>
+        <p style="color:#666;font-size:12px;margin:0 0 20px;">â» Macå´ã§ããªã¹ãã¼ãèµ·å.commandããå®è¡ä¸­ã®å¿è¦ãããã¾ã</p>
         <div style="display:flex;gap:10px;justify-content:flex-end;flex-wrap:wrap;">
           <button onclick="document.getElementById('refreshModal').style.display='none'"
-            style="background:#333;border:none;color:#fff;padding:10px 20px;border-radius:20px;cursor:pointer;font-size:14px;">閉じる</button>
+            style="background:#333;border:none;color:#fff;padding:10px 20px;border-radius:20px;cursor:pointer;font-size:14px;">éãã</button>
           <button id="sendRefreshBtn" onclick="sendRefreshRequest()"
             style="background:linear-gradient(135deg,#E1306C,#833AB4);border:none;color:#fff;padding:10px 24px;border-radius:20px;cursor:pointer;font-size:15px;font-weight:700;">
-            🔄 今すぐ更新
+            ð ä»ããæ´æ°
           </button>
         </div>
       </div>
       <div id="refreshSending" style="display:none;text-align:center;padding:10px 0;">
-        <div style="font-size:32px;margin-bottom:12px;">⏳</div>
-        <p style="color:#aaa;">更新リクエストを送信中...</p>
+        <div style="font-size:32px;margin-bottom:12px;">â³</div>
+        <p style="color:#aaa;">æ´æ°ãªã¯ã¨ã¹ããéä¿¡ä¸­...</p>
       </div>
       <div id="refreshDone" style="display:none;text-align:center;padding:10px 0;">
-        <div style="font-size:36px;margin-bottom:12px;">✅</div>
-        <p style="color:#aaa;margin-bottom:4px;">リクエストを送信しました！</p>
-        <p style="color:#888;font-size:13px;margin-bottom:20px;">Macがデータを取得中です（約1〜3分）。<br>完了後、下のボタンでページを更新してください。</p>
+        <div style="font-size:36px;margin-bottom:12px;">â</div>
+        <p style="color:#aaa;margin-bottom:4px;">ãªã¯ã¨ã¹ããéä¿¡ãã¾ããï¼</p>
+        <p style="color:#888;font-size:13px;margin-bottom:20px;">Macããã¼ã¿ãåå¾ä¸­ã§ãï¼ç´1ã3åï¼ã<br>å®äºå¾ãä¸ã®ãã¿ã³ã§ãã¼ã¸ãæ´æ°ãã¦ãã ããã</p>
         <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
           <button onclick="document.getElementById('refreshModal').style.display='none'"
-            style="background:#333;border:none;color:#fff;padding:10px 20px;border-radius:20px;cursor:pointer;font-size:14px;">閉じる</button>
+            style="background:#333;border:none;color:#fff;padding:10px 20px;border-radius:20px;cursor:pointer;font-size:14px;">éãã</button>
           <button onclick="location.reload()"
-            style="background:linear-gradient(135deg,#667eea,#764ba2);border:none;color:#fff;padding:10px 24px;border-radius:20px;cursor:pointer;font-size:15px;font-weight:700;">🔄 ページを再読み込み</button>
+            style="background:linear-gradient(135deg,#667eea,#764ba2);border:none;color:#fff;padding:10px 24px;border-radius:20px;cursor:pointer;font-size:15px;font-weight:700;">ð ãã¼ã¸ãåèª­ã¿è¾¼ã¿</button>
         </div>
       </div>
       <div id="refreshError" style="display:none;text-align:center;padding:10px 0;">
-        <div style="font-size:36px;margin-bottom:12px;">❌</div>
-        <p style="color:#f88;margin-bottom:20px;">送信に失敗しました。<br>ネットワークを確認してください。</p>
+        <div style="font-size:36px;margin-bottom:12px;">â</div>
+        <p style="color:#f88;margin-bottom:20px;">éä¿¡ã«å¤±æãã¾ããã<br>ãããã¯ã¼ã¯ãç¢ºèªãã¦ãã ããã</p>
         <div style="display:flex;gap:10px;justify-content:center;">
           <button onclick="resetRefreshUI()"
-            style="background:#555;border:none;color:#fff;padding:10px 20px;border-radius:20px;cursor:pointer;font-size:14px;">やり直す</button>
+            style="background:#555;border:none;color:#fff;padding:10px 20px;border-radius:20px;cursor:pointer;font-size:14px;">ããç´ã</button>
         </div>
       </div>
 
@@ -310,7 +310,7 @@
   </script>
 </div>
 
-<!-- タブナビ -->
+<!-- ã¿ããã -->
 <nav class="tab-nav">
   <button class="tab-btn active-ig" id="btn-ig" onclick="switchTab('ig')">
     <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
@@ -322,153 +322,153 @@
   </button>
 </nav>
 
-<!-- Instagram タブ -->
+<!-- Instagram ã¿ã -->
 <div class="tab-pane active" id="pane-ig">
 <div class="container">
 
-  <!-- メトリクスカード -->
+  <!-- ã¡ããªã¯ã¹ã«ã¼ã -->
   <div class="section">
-    <div class="section-title">アカウント概要</div>
+    <div class="section-title">ã¢ã«ã¦ã³ãæ¦è¦</div>
     <div class="metrics-grid">
       
         <div class="metric-card">
-          <div class="metric-icon">👥</div>
+          <div class="metric-icon">ð¥</div>
           <div class="metric-value">0</div>
-          <div class="metric-label">フォロワー</div>
+          <div class="metric-label">ãã©ã­ã¯ã¼</div>
         </div>
         <div class="metric-card">
-          <div class="metric-icon">📷</div>
+          <div class="metric-icon">ð·</div>
           <div class="metric-value">0</div>
-          <div class="metric-label">総投稿数</div>
+          <div class="metric-label">ç·æç¨¿æ°</div>
         </div>
         <div class="metric-card">
-          <div class="metric-icon">▶️</div>
+          <div class="metric-icon">â¶ï¸</div>
           <div class="metric-value">141</div>
-          <div class="metric-label">平均再生数</div>
+          <div class="metric-label">å¹³ååçæ°</div>
         </div>
         <div class="metric-card">
-          <div class="metric-icon">💫</div>
+          <div class="metric-icon">ð«</div>
           <div class="metric-value">0.8%</div>
-          <div class="metric-label">平均ENG率</div>
+          <div class="metric-label">å¹³åENGç</div>
         </div>
         <div class="metric-card">
-          <div class="metric-icon">❤️</div>
+          <div class="metric-icon">â¤ï¸</div>
           <div class="metric-value">0</div>
-          <div class="metric-label">平均いいね</div>
+          <div class="metric-label">å¹³åããã­</div>
         </div>
         <div class="metric-card">
-          <div class="metric-icon">💬</div>
+          <div class="metric-icon">ð¬</div>
           <div class="metric-value">0</div>
-          <div class="metric-label">平均コメント</div>
+          <div class="metric-label">å¹³åã³ã¡ã³ã</div>
         </div>
         <div class="metric-card">
-          <div class="metric-icon">🔖</div>
+          <div class="metric-icon">ð</div>
           <div class="metric-value">0</div>
-          <div class="metric-label">平均保存</div>
+          <div class="metric-label">å¹³åä¿å­</div>
         </div>
     </div>
   </div>
 
-  <!-- 再生数推移 -->
+  <!-- åçæ°æ¨ç§» -->
   <div class="section">
-    <div class="section-title">再生数の推移（投稿順）</div>
+    <div class="section-title">åçæ°ã®æ¨ç§»ï¼æç¨¿é ï¼</div>
     <div class="chart-card">
-      <div class="chart-title">再生数</div>
+      <div class="chart-title">åçæ°</div>
       <div style="position:relative;height:260px">
-        <canvas id="playsChart" role="img" aria-label="投稿別再生数の推移グラフ">投稿別の再生数データ</canvas>
+        <canvas id="playsChart" role="img" aria-label="æç¨¿å¥åçæ°ã®æ¨ç§»ã°ã©ã">æç¨¿å¥ã®åçæ°ãã¼ã¿</canvas>
       </div>
     </div>
   </div>
 
-  <!-- エンゲージメント + いいね/コメント/保存 -->
+  <!-- ã¨ã³ã²ã¼ã¸ã¡ã³ã + ããã­/ã³ã¡ã³ã/ä¿å­ -->
   <div class="section">
     <div class="charts-row">
       <div class="chart-card">
-        <div class="chart-title">エンゲージメント率（再生数ベース）</div>
+        <div class="chart-title">ã¨ã³ã²ã¼ã¸ã¡ã³ãçï¼åçæ°ãã¼ã¹ï¼</div>
         <div style="position:relative;height:220px">
-          <canvas id="engChart" role="img" aria-label="エンゲージメント率の推移">ENG率データ</canvas>
+          <canvas id="engChart" role="img" aria-label="ã¨ã³ã²ã¼ã¸ã¡ã³ãçã®æ¨ç§»">ENGçãã¼ã¿</canvas>
         </div>
       </div>
       <div class="chart-card">
-        <div class="chart-title">インタラクション内訳（直近 12 件合計）</div>
+        <div class="chart-title">ã¤ã³ã¿ã©ã¯ã·ã§ã³åè¨³ï¼ç´è¿ 12 ä»¶åè¨ï¼</div>
         <div style="position:relative;height:220px">
-          <canvas id="interChart" role="img" aria-label="いいね・コメント・保存の内訳">インタラクションデータ</canvas>
+          <canvas id="interChart" role="img" aria-label="ããã­ã»ã³ã¡ã³ãã»ä¿å­ã®åè¨³">ã¤ã³ã¿ã©ã¯ã·ã§ã³ãã¼ã¿</canvas>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- 投稿時間帯 + 曜日 + コンテンツタイプ -->
+  <!-- æç¨¿æéå¸¯ + ææ¥ + ã³ã³ãã³ãã¿ã¤ã -->
   <div class="section">
     <div class="charts-row-3">
       <div class="chart-card">
-        <div class="chart-title">時間帯別 平均再生数</div>
+        <div class="chart-title">æéå¸¯å¥ å¹³ååçæ°</div>
         <div style="position:relative;height:200px">
-          <canvas id="hourChart" role="img" aria-label="時間帯別平均再生数">時間帯データ</canvas>
+          <canvas id="hourChart" role="img" aria-label="æéå¸¯å¥å¹³ååçæ°">æéå¸¯ãã¼ã¿</canvas>
         </div>
       </div>
       <div class="chart-card">
-        <div class="chart-title">曜日別 平均再生数</div>
+        <div class="chart-title">ææ¥å¥ å¹³ååçæ°</div>
         <div style="position:relative;height:200px">
-          <canvas id="dayChart" role="img" aria-label="曜日別平均再生数">曜日データ</canvas>
+          <canvas id="dayChart" role="img" aria-label="ææ¥å¥å¹³ååçæ°">ææ¥ãã¼ã¿</canvas>
         </div>
       </div>
       <div class="chart-card">
-        <div class="chart-title">コンテンツ種別 投稿数</div>
+        <div class="chart-title">ã³ã³ãã³ãç¨®å¥ æç¨¿æ°</div>
         <div style="position:relative;height:200px">
-          <canvas id="typeChart" role="img" aria-label="コンテンツ種別分布">種別データ</canvas>
+          <canvas id="typeChart" role="img" aria-label="ã³ã³ãã³ãç¨®å¥åå¸">ç¨®å¥ãã¼ã¿</canvas>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- 改善提案 -->
+  <!-- æ¹åææ¡ -->
   <div class="section">
-    <div class="section-title">改善提案</div>
+    <div class="section-title">æ¹åææ¡</div>
     
           <div class="suggestion-card">
             <div class="suggestion-header">
-              <span class="suggestion-icon">⏰</span>
-              <span class="suggestion-title">12時台が最もパフォーマンスが高い</span>
-              <span class="priority-badge" style="background:#F77737">推奨</span>
+              <span class="suggestion-icon">â°</span>
+              <span class="suggestion-title">12æå°ãæãããã©ã¼ãã³ã¹ãé«ã</span>
+              <span class="priority-badge" style="background:#F77737">æ¨å¥¨</span>
             </div>
-            <p class="suggestion-body">12:00〜13:00 の投稿は平均 186 再生。この時間帯を意識して投稿スケジュールを組みましょう。</p>
+            <p class="suggestion-body">12:00ã13:00 ã®æç¨¿ã¯å¹³å 186 åçããã®æéå¸¯ãæè­ãã¦æç¨¿ã¹ã±ã¸ã¥ã¼ã«ãçµã¿ã¾ãããã</p>
           </div>
           <div class="suggestion-card">
             <div class="suggestion-header">
-              <span class="suggestion-icon">📅</span>
-              <span class="suggestion-title">月曜日の投稿が高パフォーマンス</span>
-              <span class="priority-badge" style="background:#F77737">推奨</span>
+              <span class="suggestion-icon">ð</span>
+              <span class="suggestion-title">æææ¥ã®æç¨¿ãé«ããã©ã¼ãã³ã¹</span>
+              <span class="priority-badge" style="background:#F77737">æ¨å¥¨</span>
             </div>
-            <p class="suggestion-body">月曜日の平均再生数 186。週1本以上は月曜日を狙いましょう。</p>
+            <p class="suggestion-body">æææ¥ã®å¹³ååçæ° 186ãé±1æ¬ä»¥ä¸ã¯æææ¥ãçãã¾ãããã</p>
           </div>
           <div class="suggestion-card">
             <div class="suggestion-header">
-              <span class="suggestion-icon">💬</span>
-              <span class="suggestion-title">エンゲージメント率が低め（平均 0.8%）</span>
-              <span class="priority-badge" style="background:#E1306C">重要</span>
+              <span class="suggestion-icon">ð¬</span>
+              <span class="suggestion-title">ã¨ã³ã²ã¼ã¸ã¡ã³ãçãä½ãï¼å¹³å 0.8%ï¼</span>
+              <span class="priority-badge" style="background:#E1306C">éè¦</span>
             </div>
-            <p class="suggestion-body">動画の最後に「コメントで教えて！」「保存して見返して！」などCTAを入れると改善しやすいです。</p>
+            <p class="suggestion-body">åç»ã®æå¾ã«ãã³ã¡ã³ãã§æãã¦ï¼ããä¿å­ãã¦è¦è¿ãã¦ï¼ããªã©CTAãå¥ããã¨æ¹åããããã§ãã</p>
           </div>
   </div>
 
-  <!-- 投稿一覧テーブル -->
+  <!-- æç¨¿ä¸è¦§ãã¼ãã« -->
   <div class="section">
-    <div class="section-title">投稿一覧（再生数順）</div>
+    <div class="section-title">æç¨¿ä¸è¦§ï¼åçæ°é ï¼</div>
     <div class="chart-card">
       <div class="table-wrap">
         <table>
           <thead>
             <tr>
               <th>#</th>
-              <th>ショートコード</th>
-              <th>種別</th>
-              <th class="hide-sp">投稿日時</th>
-              <th class="num">再生数</th>
-              <th class="num">いいね</th>
-              <th class="num hide-sp">コメント</th>
-              <th class="num hide-sp">保存</th>
-              <th class="num">ENG率</th>
+              <th>ã·ã§ã¼ãã³ã¼ã</th>
+              <th>ç¨®å¥</th>
+              <th class="hide-sp">æç¨¿æ¥æ</th>
+              <th class="num">åçæ°</th>
+              <th class="num">ããã­</th>
+              <th class="num hide-sp">ã³ã¡ã³ã</th>
+              <th class="num hide-sp">ä¿å­</th>
+              <th class="num">ENGç</th>
             </tr>
           </thead>
           <tbody>
@@ -476,7 +476,7 @@
           <tr>
             <td style="font-weight:500;color:#444">1</td>
             <td><a href="https://www.instagram.com/reel/DXzNOJkOXPG/" target="_blank" style="color:#833AB4;text-decoration:none;font-family:monospace;font-size:12px">DXzNOJkOXP</a></td>
-            <td><span class="badge badge-reel">リール</span></td>
+            <td><span class="badge badge-reel">ãªã¼ã«</span></td>
             <td class="hide-sp" style="color:#888;font-size:13px">2026-05-01 23:54</td>
             <td class="num">188</td>
             <td class="num">2</td>
@@ -487,7 +487,7 @@
           <tr>
             <td style="font-weight:500;color:#444">2</td>
             <td><a href="https://www.instagram.com/reel/DXnrYXvAcCL/" target="_blank" style="color:#833AB4;text-decoration:none;font-family:monospace;font-size:12px">DXnrYXvAcC</a></td>
-            <td><span class="badge badge-reel">リール</span></td>
+            <td><span class="badge badge-reel">ãªã¼ã«</span></td>
             <td class="hide-sp" style="color:#888;font-size:13px">2026-04-27 12:28</td>
             <td class="num">186</td>
             <td class="num">1</td>
@@ -498,7 +498,7 @@
           <tr>
             <td style="font-weight:500;color:#444">3</td>
             <td><a href="https://www.instagram.com/reel/DXZLfG0jkcu/" target="_blank" style="color:#833AB4;text-decoration:none;font-family:monospace;font-size:12px">DXZLfG0jkc</a></td>
-            <td><span class="badge badge-reel">リール</span></td>
+            <td><span class="badge badge-reel">ãªã¼ã«</span></td>
             <td class="hide-sp" style="color:#888;font-size:13px">2026-04-21 21:18</td>
             <td class="num">182</td>
             <td class="num">2</td>
@@ -509,7 +509,7 @@
           <tr>
             <td style="font-weight:500;color:#444">4</td>
             <td><a href="https://www.instagram.com/reel/DX_EXpthM3Q/" target="_blank" style="color:#833AB4;text-decoration:none;font-family:monospace;font-size:12px">DX_EXpthM3</a></td>
-            <td><span class="badge badge-reel">リール</span></td>
+            <td><span class="badge badge-reel">ãªã¼ã«</span></td>
             <td class="hide-sp" style="color:#888;font-size:13px">2026-05-06 14:29</td>
             <td class="num">144</td>
             <td class="num">0</td>
@@ -520,7 +520,7 @@
           <tr>
             <td style="font-weight:500;color:#444">5</td>
             <td><a href="https://www.instagram.com/reel/DYD2cifuZYc/" target="_blank" style="color:#833AB4;text-decoration:none;font-family:monospace;font-size:12px">DYD2cifuZY</a></td>
-            <td><span class="badge badge-reel">リール</span></td>
+            <td><span class="badge badge-reel">ãªã¼ã«</span></td>
             <td class="hide-sp" style="color:#888;font-size:13px">2026-05-08 11:05</td>
             <td class="num">132</td>
             <td class="num">1</td>
@@ -531,7 +531,7 @@
           <tr>
             <td style="font-weight:500;color:#444">6</td>
             <td><a href="https://www.instagram.com/reel/DYC-uBfOnPw/" target="_blank" style="color:#833AB4;text-decoration:none;font-family:monospace;font-size:12px">DYC-uBfOnP</a></td>
-            <td><span class="badge badge-reel">リール</span></td>
+            <td><span class="badge badge-reel">ãªã¼ã«</span></td>
             <td class="hide-sp" style="color:#888;font-size:13px">2026-05-08 02:57</td>
             <td class="num">132</td>
             <td class="num">0</td>
@@ -542,7 +542,7 @@
           <tr>
             <td style="font-weight:500;color:#444">7</td>
             <td><a href="https://www.instagram.com/reel/DYC9l1IuL9Z/" target="_blank" style="color:#833AB4;text-decoration:none;font-family:monospace;font-size:12px">DYC9l1IuL9</a></td>
-            <td><span class="badge badge-reel">リール</span></td>
+            <td><span class="badge badge-reel">ãªã¼ã«</span></td>
             <td class="hide-sp" style="color:#888;font-size:13px">2026-05-08 02:48</td>
             <td class="num">132</td>
             <td class="num">1</td>
@@ -553,7 +553,7 @@
           <tr>
             <td style="font-weight:500;color:#444">8</td>
             <td><a href="https://www.instagram.com/reel/DYD4GsWu8Nl/" target="_blank" style="color:#833AB4;text-decoration:none;font-family:monospace;font-size:12px">DYD4GsWu8N</a></td>
-            <td><span class="badge badge-reel">リール</span></td>
+            <td><span class="badge badge-reel">ãªã¼ã«</span></td>
             <td class="hide-sp" style="color:#888;font-size:13px">2026-05-08 11:17</td>
             <td class="num">130</td>
             <td class="num">1</td>
@@ -564,7 +564,7 @@
           <tr>
             <td style="font-weight:500;color:#444">9</td>
             <td><a href="https://www.instagram.com/reel/DYD3ZUCOhal/" target="_blank" style="color:#833AB4;text-decoration:none;font-family:monospace;font-size:12px">DYD3ZUCOha</a></td>
-            <td><span class="badge badge-reel">リール</span></td>
+            <td><span class="badge badge-reel">ãªã¼ã«</span></td>
             <td class="hide-sp" style="color:#888;font-size:13px">2026-05-08 11:13</td>
             <td class="num">125</td>
             <td class="num">0</td>
@@ -575,7 +575,7 @@
           <tr>
             <td style="font-weight:500;color:#444">10</td>
             <td><a href="https://www.instagram.com/reel/DYCwS8FuH9h/" target="_blank" style="color:#833AB4;text-decoration:none;font-family:monospace;font-size:12px">DYCwS8FuH9</a></td>
-            <td><span class="badge badge-reel">リール</span></td>
+            <td><span class="badge badge-reel">ãªã¼ã«</span></td>
             <td class="hide-sp" style="color:#888;font-size:13px">2026-05-08 01:23</td>
             <td class="num">122</td>
             <td class="num">0</td>
@@ -586,7 +586,7 @@
           <tr>
             <td style="font-weight:500;color:#444">11</td>
             <td><a href="https://www.instagram.com/reel/DYC8hliOnZm/" target="_blank" style="color:#833AB4;text-decoration:none;font-family:monospace;font-size:12px">DYC8hliOnZ</a></td>
-            <td><span class="badge badge-reel">リール</span></td>
+            <td><span class="badge badge-reel">ãªã¼ã«</span></td>
             <td class="hide-sp" style="color:#888;font-size:13px">2026-05-08 02:38</td>
             <td class="num">116</td>
             <td class="num">0</td>
@@ -597,7 +597,7 @@
           <tr>
             <td style="font-weight:500;color:#444">12</td>
             <td><a href="https://www.instagram.com/reel/DXzNwWHON8Q/" target="_blank" style="color:#833AB4;text-decoration:none;font-family:monospace;font-size:12px">DXzNwWHON8</a></td>
-            <td><span class="badge badge-reel">リール</span></td>
+            <td><span class="badge badge-reel">ãªã¼ã«</span></td>
             <td class="hide-sp" style="color:#888;font-size:13px">2026-05-01 23:59</td>
             <td class="num">107</td>
             <td class="num">2</td>
@@ -637,13 +637,13 @@ const baseOpts = {
   plugins: { legend: { display: false } },
 };
 
-// 再生数推移
+// åçæ°æ¨ç§»
 new Chart(document.getElementById("playsChart"), {
   type: "bar",
   data: {
     labels,
     datasets: [{
-      label: "再生数",
+      label: "åçæ°",
       data: plays,
       backgroundColor: plays.map((_, i) => `hsl(${200 + i * 8}, 60%, 55%)`),
       borderRadius: 4,
@@ -658,13 +658,13 @@ new Chart(document.getElementById("playsChart"), {
   }
 });
 
-// ENG率
+// ENGç
 new Chart(document.getElementById("engChart"), {
   type: "line",
   data: {
     labels,
     datasets: [{
-      label: "ENG率 (%)",
+      label: "ENGç (%)",
       data: engRates,
       borderColor: IG_RED,
       backgroundColor: "rgba(225,48,108,0.08)",
@@ -682,14 +682,14 @@ new Chart(document.getElementById("engChart"), {
   }
 });
 
-// インタラクション内訳（ドーナツ）
+// ã¤ã³ã¿ã©ã¯ã·ã§ã³åè¨³ï¼ãã¼ããï¼
 const totalLikes    = likes.reduce((a,b)=>a+b,0);
 const totalComments = comments.reduce((a,b)=>a+b,0);
 const totalSaves    = saves.reduce((a,b)=>a+b,0);
 new Chart(document.getElementById("interChart"), {
   type: "doughnut",
   data: {
-    labels: ["いいね", "コメント", "保存"],
+    labels: ["ããã­", "ã³ã¡ã³ã", "ä¿å­"],
     datasets: [{
       data: [totalLikes, totalComments, totalSaves],
       backgroundColor: [IG_RED, IG_ORANGE, IG_PURPLE],
@@ -708,12 +708,12 @@ new Chart(document.getElementById("interChart"), {
   }
 });
 
-// 時間帯別
+// æéå¸¯å¥
 new Chart(document.getElementById("hourChart"), {
   type: "bar",
   data: {
-    labels: Array.from({length: 24}, (_,i) => i + "時"),
-    datasets: [{ label: "平均再生数", data: hourAvg, backgroundColor: IG_PURPLE, borderRadius: 3 }]
+    labels: Array.from({length: 24}, (_,i) => i + "æ"),
+    datasets: [{ label: "å¹³ååçæ°", data: hourAvg, backgroundColor: IG_PURPLE, borderRadius: 3 }]
   },
   options: {
     ...baseOpts,
@@ -724,12 +724,12 @@ new Chart(document.getElementById("hourChart"), {
   }
 });
 
-// 曜日別
+// ææ¥å¥
 new Chart(document.getElementById("dayChart"), {
   type: "bar",
   data: {
-    labels: ["月","火","水","木","金","土","日"],
-    datasets: [{ label: "平均再生数", data: dayAvg, backgroundColor: IG_ORANGE, borderRadius: 3 }]
+    labels: ["æ","ç«","æ°´","æ¨","é","å","æ¥"],
+    datasets: [{ label: "å¹³ååçæ°", data: dayAvg, backgroundColor: IG_ORANGE, borderRadius: 3 }]
   },
   options: {
     ...baseOpts,
@@ -740,7 +740,7 @@ new Chart(document.getElementById("dayChart"), {
   }
 });
 
-// コンテンツ種別
+// ã³ã³ãã³ãç¨®å¥
 new Chart(document.getElementById("typeChart"), {
   type: "doughnut",
   data: {
@@ -762,7 +762,7 @@ new Chart(document.getElementById("typeChart"), {
   }
 });
 
-// ── タブ切り替え ──
+// ââ ã¿ãåãæ¿ã ââ
 function switchTab(t) {
   ['ig','tt'].forEach(id => {
     document.getElementById('pane-' + id).classList.toggle('active', id === t);
@@ -774,9 +774,9 @@ function switchTab(t) {
 
 </div><!-- /pane-ig -->
 
-<!-- TikTok タブ -->
+<!-- TikTok ã¿ã -->
 <div class="tab-pane" id="pane-tt">
-<div class="container"><div class="section"><div class="section-title" style="border-color:#69C9D0">アカウント概要</div><div class="tt-metrics"><div class="tt-card"><div class="tt-val">—</div><div class="tt-lbl">フォロワー</div></div><div class="tt-card"><div class="tt-val">—</div><div class="tt-lbl">フォロー中</div></div><div class="tt-card"><div class="tt-val">—</div><div class="tt-lbl">いいね合計</div></div><div class="tt-card"><div class="tt-val">0+</div><div class="tt-lbl">動画数</div></div></div></div><div class="section"><div class="section-title" style="border-color:#EE1D52">📊 マーケティング指標</div><div class="tt-metrics"><div class="tt-card"><div class="tt-val" style="color:#69C9D0">0</div><div class="tt-lbl">平均再生数</div></div><div class="tt-card"><div class="tt-val" style="color:#69C9D0">0</div><div class="tt-lbl">最高再生数</div></div><div class="tt-card"><div class="tt-val" style="color:#F44336">0%</div><div class="tt-lbl">エンゲージメント率<br><span style="font-size:10px;color:#aaa">いいね÷フォロワー</span></div></div><div class="tt-card"><div class="tt-val" style="color:#F44336">0x</div><div class="tt-lbl">拡散係数<br><span style="font-size:10px;color:#aaa">平均再生÷フォロワー</span></div></div><div class="tt-card"><div class="tt-val" style="color:#69C9D0">0</div><div class="tt-lbl">平均いいね（推定）</div></div><div class="tt-card"><div class="tt-val" style="color:#69C9D0">13</div><div class="tt-lbl">自動投稿数</div></div></div><div class="charts-row" style="margin-top:16px"></div></div><div class="section"><div class="section-title" style="border-color:#EE1D52">💡 改善提案</div><p style="color:#999;font-size:13px">データが少ないため分析できません</p></div><div class="section"></div></div>
+<div class="container"><div class="section"><div class="section-title" style="border-color:#69C9D0">ã¢ã«ã¦ã³ãæ¦è¦</div><div class="tt-metrics"><div class="tt-card"><div class="tt-val">â</div><div class="tt-lbl">ãã©ã­ã¯ã¼</div></div><div class="tt-card"><div class="tt-val">â</div><div class="tt-lbl">ãã©ã­ã¼ä¸­</div></div><div class="tt-card"><div class="tt-val">â</div><div class="tt-lbl">ããã­åè¨</div></div><div class="tt-card"><div class="tt-val">0+</div><div class="tt-lbl">åç»æ°</div></div></div></div><div class="section"><div class="section-title" style="border-color:#EE1D52">ð ãã¼ã±ãã£ã³ã°ææ¨</div><div class="tt-metrics"><div class="tt-card"><div class="tt-val" style="color:#69C9D0">0</div><div class="tt-lbl">å¹³ååçæ°</div></div><div class="tt-card"><div class="tt-val" style="color:#69C9D0">0</div><div class="tt-lbl">æé«åçæ°</div></div><div class="tt-card"><div class="tt-val" style="color:#F44336">0%</div><div class="tt-lbl">ã¨ã³ã²ã¼ã¸ã¡ã³ãç<br><span style="font-size:10px;color:#aaa">ããã­Ã·ãã©ã­ã¯ã¼</span></div></div><div class="tt-card"><div class="tt-val" style="color:#F44336">0x</div><div class="tt-lbl">æ¡æ£ä¿æ°<br><span style="font-size:10px;color:#aaa">å¹³ååçÃ·ãã©ã­ã¯ã¼</span></div></div><div class="tt-card"><div class="tt-val" style="color:#69C9D0">0</div><div class="tt-lbl">å¹³åããã­ï¼æ¨å®ï¼</div></div><div class="tt-card"><div class="tt-val" style="color:#69C9D0">13</div><div class="tt-lbl">èªåæç¨¿æ°</div></div></div><div class="charts-row" style="margin-top:16px"></div></div><div class="section"><div class="section-title" style="border-color:#EE1D52">ð¡ æ¹åææ¡</div><p style="color:#999;font-size:13px">ãã¼ã¿ãå°ãªãããåæã§ãã¾ãã</p></div><div class="section"></div></div>
 </div>
 
 </body>
