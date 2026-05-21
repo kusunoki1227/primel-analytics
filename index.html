@@ -206,7 +206,7 @@
     </div>
   </div>
   <div class="updated-at" style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;">
-    <span>最終更新: 2026年05月21日 11:28 ｜ 分析対象: 直近 12 件</span>
+    <span>最終更新: 2026年05月21日 11:29 ｜ 分析対象: 直近 12 件</span>
     <button id="refreshBtn" onclick="handleRefresh()" style="
       background:rgba(255,255,255,0.15);
       border:1px solid rgba(255,255,255,0.4);
@@ -343,12 +343,12 @@
         </div>
         <div class="metric-card">
           <div class="metric-icon">▶️</div>
-          <div class="metric-value">141</div>
+          <div class="metric-value">132</div>
           <div class="metric-label">平均再生数</div>
         </div>
         <div class="metric-card">
           <div class="metric-icon">💫</div>
-          <div class="metric-value">0.8%</div>
+          <div class="metric-value">0.5%</div>
           <div class="metric-label">平均ENG率</div>
         </div>
         <div class="metric-card">
@@ -429,10 +429,10 @@
           <div class="suggestion-card">
             <div class="suggestion-header">
               <span class="suggestion-icon">⏰</span>
-              <span class="suggestion-title">12時台が最もパフォーマンスが高い</span>
+              <span class="suggestion-title">23時台が最もパフォーマンスが高い</span>
               <span class="priority-badge" style="background:#F77737">推奨</span>
             </div>
-            <p class="suggestion-body">12:00〜13:00 の投稿は平均 186 再生。この時間帯を意識して投稿スケジュールを組みましょう。</p>
+            <p class="suggestion-body">23:00〜24:00 の投稿は平均 188 再生。この時間帯を意識して投稿スケジュールを組みましょう。</p>
           </div>
           <div class="suggestion-card">
             <div class="suggestion-header">
@@ -445,7 +445,7 @@
           <div class="suggestion-card">
             <div class="suggestion-header">
               <span class="suggestion-icon">💬</span>
-              <span class="suggestion-title">エンゲージメント率が低め（平均 0.8%）</span>
+              <span class="suggestion-title">エンゲージメント率が低め（平均 0.5%）</span>
               <span class="priority-badge" style="background:#E1306C">重要</span>
             </div>
             <p class="suggestion-body">動画の最後に「コメントで教えて！」「保存して見返して！」などCTAを入れると改善しやすいです。</p>
@@ -596,14 +596,14 @@
           </tr>
           <tr>
             <td style="font-weight:500;color:#444">12</td>
-            <td><a href="https://www.instagram.com/reel/DXzNwWHON8Q/" target="_blank" style="color:#833AB4;text-decoration:none;font-family:monospace;font-size:12px">DXzNwWHON8</a></td>
+            <td><a href="https://www.instagram.com/reel/DYlX6hCOIfx/" target="_blank" style="color:#833AB4;text-decoration:none;font-family:monospace;font-size:12px">DYlX6hCOIf</a></td>
             <td><span class="badge badge-reel">リール</span></td>
-            <td class="hide-sp" style="color:#888;font-size:13px">2026-05-01 23:59</td>
-            <td class="num">107</td>
-            <td class="num">2</td>
-            <td class="num hide-sp">2</td>
+            <td class="hide-sp" style="color:#888;font-size:13px">2026-05-21 11:29</td>
+            <td class="num">0</td>
+            <td class="num">0</td>
             <td class="num hide-sp">0</td>
-            <td class="num">3.7%</td>
+            <td class="num hide-sp">0</td>
+            <td class="num">0.0%</td>
           </tr>
           </tbody>
         </table>
@@ -614,14 +614,14 @@
 </div>
 
 <script>
-const labels  = ["04-21 21:18", "04-27 12:28", "05-01 23:54", "05-01 23:59", "05-06 14:29", "05-08 01:23", "05-08 02:38", "05-08 02:48", "05-08 02:57", "05-08 11:05", "05-08 11:13", "05-08 11:17"];
-const plays   = [182, 186, 188, 107, 144, 122, 116, 132, 132, 132, 125, 130];
-const likes   = [2, 1, 2, 2, 0, 0, 0, 1, 0, 1, 0, 1];
-const comments= [0, 0, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0];
+const labels  = ["04-21 21:18", "04-27 12:28", "05-01 23:54", "05-06 14:29", "05-08 01:23", "05-08 02:38", "05-08 02:48", "05-08 02:57", "05-08 11:05", "05-08 11:13", "05-08 11:17", "05-21 11:29"];
+const plays   = [182, 186, 188, 144, 122, 116, 132, 132, 132, 125, 130, 0];
+const likes   = [2, 1, 2, 0, 0, 0, 1, 0, 1, 0, 1, 0];
+const comments= [0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 const saves   = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-const engRates= [1.1, 0.54, 2.13, 3.74, 0.0, 0.0, 0.0, 0.76, 0.0, 0.76, 0.0, 0.77];
-const hourAvg = [0, 122, 127, 0, 0, 0, 0, 0, 0, 0, 0, 129, 186, 0, 144, 0, 0, 0, 0, 0, 0, 182, 0, 148];
-const dayAvg  = [186, 182, 144, 0, 132, 0, 0];
+const engRates= [1.1, 0.54, 2.13, 0.0, 0.0, 0.0, 0.76, 0.0, 0.76, 0.0, 0.77, 0.0];
+const hourAvg = [0, 122, 127, 0, 0, 0, 0, 0, 0, 0, 0, 97, 186, 0, 144, 0, 0, 0, 0, 0, 0, 182, 0, 188];
+const dayAvg  = [186, 182, 144, 0, 135, 0, 0];
 const typeLabels = ["\u30ea\u30fc\u30eb"];
 const typeCounts = [12];
 
